@@ -14,35 +14,31 @@ TEST_DIR = tests
 BUILD_DIR = build
 
 # all :builds everything(both mains and tests
-all: $(BUILD_DIR)/ebikeClient $(BUILD_DIR)/generateEBikeFile $(BUILD_DIR)/test_ebikeClient $(BUILD_DIR)/test_GPSSensor
+all: ebikeClient generateEBikeFile test_ebikeClient test_GPSSensor
 
 # building main client program which read from gps and sends them
-$(BUILD_DIR)/ebikeClient: $(SRC_DIR)/ebikeClient.cpp
-	mkdir -p $(BUILD_DIR)
+ebikeClient: $(SRC_DIR)/ebikeClient.cpp
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
 	chmod +x $@
 
 # building generateeBike.cpp from util
-$(BUILD_DIR)/generateEBikeFile: $(SRC_DIR)/util/generateEBikeFile.cpp
-	mkdir -p $(BUILD_DIR)/util
+generateEBikeFile: $(SRC_DIR)/util/generateEBikeFile.cpp
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
 	chmod +x $@
 
 # builds test_ebikeClient.cpp from /tests
-$(BUILD_DIR)/test_ebikeClient: $(TEST_DIR)/test_ebikeClient.cpp
-	mkdir -p $(BUILD_DIR)
+test_ebikeClient: $(TEST_DIR)/test_ebikeClient.cpp
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -I$(TEST_DIR) -o $@ $<
 	chmod +x $@
 
 # builds test_GPSSensor.cpp from /tests
-$(BUILD_DIR)/test_GPSSensor: $(TEST_DIR)/test_GPSSensor.cpp
-	mkdir -p $(BUILD_DIR)
+test_GPSSensor: $(TEST_DIR)/test_GPSSensor.cpp
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -I$(TEST_DIR) -o $@ $<
 	chmod +x $@
 
 # cleans previously generated files
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -f ebikeClient generateEBikeFile test_ebikeClient test_GPSSensor
 
 .PHONY: all clean
 
