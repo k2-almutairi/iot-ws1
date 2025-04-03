@@ -27,18 +27,18 @@ generateEBikeFile: $(SRC_DIR)/util/generateEBikeFile.cpp
 	chmod +x $@
 
 # builds test_ebikeClient.cpp from /tests
-test_ebikeClient: $(TEST_DIR)/test_ebikeClient.cpp
+test_test_ebikeClient: $(TEST_DIR)/test_ebikeClient.cpp
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -I$(TEST_DIR) -o $@ $<
 	chmod +x $@
 
 # builds test_GPSSensor.cpp from /tests
-test_GPSSensor: $(TEST_DIR)/test_GPSSensor.cpp
+test_test_GPSSensor: $(TEST_DIR)/test_GPSSensor.cpp
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -I$(TEST_DIR) -o $@ $<
 	chmod +x $@
 
 # cleans previously generated files
 clean:
-	rm -f ebikeClient generateEBikeFile test_ebikeClient test_GPSSensor
+	rm -f ebikeClient generateEBikeFile test_test_ebikeClient test_test_GPSSensor
 
 .PHONY: all clean
 
