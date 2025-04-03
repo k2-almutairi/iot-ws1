@@ -14,7 +14,7 @@ TEST_DIR = tests
 BUILD_DIR = build
 
 # all :builds everything(both mains and tests
-all: ebikeClient generateEBikeFile test_ebikeClient test_GPSSensor
+all: ebikeClient generateEBikeFile test_test_ebikeClient test_test_GPSSensor
 
 # building main client program which read from gps and sends them
 ebikeClient: $(SRC_DIR)/ebikeClient.cpp
