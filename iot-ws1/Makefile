@@ -20,21 +20,25 @@ all: $(BUILD_DIR)/ebikeClient $(BUILD_DIR)/generateEBikeFile $(BUILD_DIR)/test_e
 $(BUILD_DIR)/ebikeClient: $(SRC_DIR)/ebikeClient.cpp
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
+	chmod +x $@
 
 # building generateeBike.cpp from util
 $(BUILD_DIR)/generateEBikeFile: $(SRC_DIR)/util/generateEBikeFile.cpp
 	mkdir -p $(BUILD_DIR)/util
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
+	chmod +x $@
 
 # builds test_ebikeClient.cpp from /tests
 $(BUILD_DIR)/test_ebikeClient: $(TEST_DIR)/test_ebikeClient.cpp
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -I$(TEST_DIR) -o $@ $<
+	chmod +x $@
 
 # builds test_GPSSensor.cpp from /tests
 $(BUILD_DIR)/test_GPSSensor: $(TEST_DIR)/test_GPSSensor.cpp
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -I$(TEST_DIR) -o $@ $<
+	chmod +x $@
 
 # cleans previously generated files
 clean:
